@@ -1,0 +1,27 @@
+{
+  "name": "my-sliders",
+  "version": "1.0.0",
+  "description": "Here are my sliders of varying complexity.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stoqztw/my-sliders.git"
+  },
+  "keywords": [
+    "slider",
+    "sliders"
+  ],
+  "author": "Artem (stoqz)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stoqztw/my-sliders/issues"
+  },
+  "homepage": "https://github.com/stoqztw/my-sliders#readme",
+  "devDependencies": {
+    "sass": "^1.93.2",
+    "vite": "^7.1.9"
+  }
+}

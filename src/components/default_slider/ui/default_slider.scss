@@ -1,0 +1,40 @@
+.default__slider {
+	display: block;
+
+	.slider {
+		display: block;
+		position: relative;
+		width: 750px;
+		margin: auto;
+		margin-top: 200px;
+		border-radius: 16px;
+		border: 2px #2196f3 solid;
+		// overflow: hidden;
+
+		&__arrow {
+			position: absolute;
+			cursor: pointer;
+
+			&-right {
+				top: 50%;
+				right: 0;
+				transform: translateY(-50%);
+			}
+
+			&-left {
+				top: 50%;
+				left: 0;
+				transform: translateY(-50%);
+			}
+		}
+
+		&__inner {
+			display: flex;
+		}
+
+		&__slide {
+			display: block;
+			width: 750px;
+		}
+	}
+}
