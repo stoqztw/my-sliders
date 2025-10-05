@@ -6,11 +6,13 @@
 		<title>My-sliders</title>
 		<link rel="icon" type="image/x-icon" href="/src/favicon.ico" />
 		<link rel="stylesheet" href="/src/scss/style.scss" />
+		<script src="/src/components/default_slider/js/default_slider.js"></script>
 	</head>
 	<body>
 		<main>
-			<div class="default__slider">
-				<div class="container">
+			<div class="container">
+				<h1 class="title">Default slider</h1>
+				<div class="default__slider">
 					<div class="slider">
 						<div class="slider__btn-next">
 							<img
@@ -55,8 +57,11 @@
 						</div>
 					</div>
 				</div>
+				<h2 class="title">Slider with indicator</h2>
+
+				<div class="slider__indicator"></div>
 			</div>
 		</main>
-		<script type="module" src="src/main.js"></script>
+		<script defer type="module" src="src/main.js"></script>
 	</body>
 </html>

@@ -4,16 +4,17 @@
 	.slider {
 		display: block;
 		position: relative;
-		width: 750px;
+		width: 900px;
 		margin: auto;
-		margin-top: 200px;
+		margin-top: 20px;
 		border-radius: 16px;
-		border: 2px #2196f3 solid;
-		// overflow: hidden;
+		// border: 1px #2196f3 solid;
+		overflow: hidden;
 
 		&__arrow {
 			position: absolute;
 			cursor: pointer;
+			z-index: 999;
 
 			&-right {
 				top: 50%;
@@ -30,11 +31,13 @@
 
 		&__inner {
 			display: flex;
+			transition: .3s ease-in-out;
 		}
 
 		&__slide {
 			display: block;
-			width: 750px;
+			width: 900px;
+			z-index: 1;
 		}
 	}
 }
