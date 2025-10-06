@@ -1,50 +1,18 @@
 'use strict';
 
-window.addEventListener("DOMContentLoaded", () => {
-	// const slider = document.querySelector('.default__slider .slider'),
-	// 	slides = slider.querySelectorAll('.slider__slide'),
-	// 	btnNext = slider.querySelector('.slider__arrow-right'),
-	// 	btnPrev = slider.querySelector('.slider__arrow-left'),
-	// 	sliderInner = slider.querySelector('.slider__inner'),
-	// 	width = window.getComputedStyle(slider).width;
+export class DefaultSlider {
+	constructor(imgNext, imgPrev, selector, ...slides) {
+		this.imgNext = imgNext,
+			this.imgPrev = imgPrev,
+			this.selector = selector,
+			this.slides = slides
+	}
 
-	// let offset = 0;
+	render() {
+		const slider = document.createElement('div');
+		slider.classList.add('default__slider');
 
-	// btnNext.addEventListener('click', (e) => {
-	// 	if (offset === +width.replace(/\D/g, '') * (slides.length - 1)) {
-	// 		offset = 0;
-	// 	} else {
-	// 		offset += +width.replace(/\D/g, '');
-	// 	}
-
-	// 	sliderInner.style.transform = `translateX(-${offset}px)`;
-	// });
-
-	// btnPrev.addEventListener('click', (e) => {
-	// 	if (offset === 0) {
-	// 		offset = +width.replace(/\D/g, '') * (slides.length - 1);
-	// 	} else {
-	// 		offset -= +width.replace(/\D/g, '');
-	// 	}
-
-	// 	sliderInner.style.transform = `translateX(-${offset}px)`;
-	// });
-
-	const titleDefaultSlider = document.querySelector('.title__default-slider');
-
-	class DefaultSlider {
-		constructor(imgNext, imgPrev, selector, ...slides) {
-			this.imgNext = imgNext,
-				this.imgPrev = imgPrev,
-				this.selector = selector,
-				this.slides = slides
-		}
-
-		render() {
-			const slider = document.createElement('div');
-			slider.classList.add('default__slider');
-
-			slider.innerHTML = `
+		slider.innerHTML = `
 			<div class="slider">
 				<div class="slider__btn-next">
 					<img
@@ -68,56 +36,43 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-			const btnNext = slider.querySelector('.slider__arrow-right'),
-				btnPrev = slider.querySelector('.slider__arrow-left'),
-				sliderInner = slider.querySelector('.slider__inner'),
-				width = '900px';
+		const btnNext = slider.querySelector('.slider__arrow-right'),
+			btnPrev = slider.querySelector('.slider__arrow-left'),
+			sliderInner = slider.querySelector('.slider__inner'),
+			width = '900px';
 
-			let offset = 0;
+		let offset = 0;
 
-			this.slides.forEach((slide, id) => {
-				sliderInner.innerHTML += `
+		this.slides.forEach((slide, id) => {
+			sliderInner.innerHTML += `
 				<img
 					src=${slide}
 					alt="slide_${id + 1}"
 					class="slider__slide"
 				/>
 				`;
-			});
+		});
 
-			btnNext.addEventListener('click', (e) => {
-				if (offset === +width.replace(/\D/g, '') * (this.slides.length - 1)) {
-					offset = 0;
-				} else {
-					offset += +width.replace(/\D/g, '');
-				}
+		btnNext.addEventListener('click', (e) => {
+			if (offset === +width.replace(/\D/g, '') * (this.slides.length - 1)) {
+				offset = 0;
+			} else {
+				offset += +width.replace(/\D/g, '');
+			}
 
-				sliderInner.style.transform = `translateX(-${offset}px)`;
-			});
+			sliderInner.style.transform = `translateX(-${offset}px)`;
+		});
 
-			btnPrev.addEventListener('click', (e) => {
-				if (offset === 0) {
-					offset = +width.replace(/\D/g, '') * (this.slides.length - 1);
-				} else {
-					offset -= +width.replace(/\D/g, '');
-				}
+		btnPrev.addEventListener('click', (e) => {
+			if (offset === 0) {
+				offset = +width.replace(/\D/g, '') * (this.slides.length - 1);
+			} else {
+				offset -= +width.replace(/\D/g, '');
+			}
 
-				sliderInner.style.transform = `translateX(-${offset}px)`;
-			});
+			sliderInner.style.transform = `translateX(-${offset}px)`;
+		});
 
-			this.selector.after(slider)
-		}
+		this.selector.after(slider)
 	}
-
-	new DefaultSlider(
-		'/src/components/default_slider/assets/right_arrow.png',
-		'/src/components/default_slider/assets/left_arrow.png',
-		titleDefaultSlider,
-		'/src/assets/img/slide_1.png',
-		'/src/assets/img/slide_2.png',
-		'/src/assets/img/slide_3.png',
-		'/src/assets/img/slide_4.png',
-		'/src/assets/img/slide_5.png'
-	).render()
-
-});
+}

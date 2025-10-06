@@ -1,3 +1,4 @@
 @use '/src/scss/base.scss';
 
-@use '/src/components/default_slider/ui/default_slider.scss';
+@use '/src/components/default_slider/ui/default_slider.module.scss';
+@use '/src/components/slider_with_indicator/ui/slider_with_indicator.module.scss';
