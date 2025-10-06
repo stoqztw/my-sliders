@@ -36,15 +36,16 @@ export class DefaultSlider {
 
 
 
-		const btnNext = slider.querySelector('.slider__arrow-right'),
-			btnPrev = slider.querySelector('.slider__arrow-left'),
-			sliderInner = slider.querySelector('.slider__inner'),
-			width = '900px';
+		this.btnNext = slider.querySelector('.slider__arrow-right'),
+			this.btnPrev = slider.querySelector('.slider__arrow-left'),
+			this.sliderInner = slider.querySelector('.slider__inner');
+
+		const width = '900px';
 
 		let offset = 0;
 
 		this.slides.forEach((slide, id) => {
-			sliderInner.innerHTML += `
+			this.sliderInner.innerHTML += `
 				<img
 					src=${slide}
 					alt="slide_${id + 1}"
@@ -53,26 +54,26 @@ export class DefaultSlider {
 				`;
 		});
 
-		btnNext.addEventListener('click', (e) => {
+		this.btnNext.addEventListener('click', (e) => {
 			if (offset === +width.replace(/\D/g, '') * (this.slides.length - 1)) {
 				offset = 0;
 			} else {
 				offset += +width.replace(/\D/g, '');
 			}
 
-			sliderInner.style.transform = `translateX(-${offset}px)`;
+			this.sliderInner.style.transform = `translateX(-${offset}px)`;
 		});
 
-		btnPrev.addEventListener('click', (e) => {
+		this.btnPrev.addEventListener('click', (e) => {
 			if (offset === 0) {
 				offset = +width.replace(/\D/g, '') * (this.slides.length - 1);
 			} else {
 				offset -= +width.replace(/\D/g, '');
 			}
 
-			sliderInner.style.transform = `translateX(-${offset}px)`;
+			this.sliderInner.style.transform = `translateX(-${offset}px)`;
 		});
 
-		this.selector.after(slider)
+		this.selector.after(slider);
 	}
 }
