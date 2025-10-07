@@ -38,11 +38,11 @@ export class DefaultSlider {
 
 		this.btnNext = slider.querySelector('.slider__arrow-right'),
 			this.btnPrev = slider.querySelector('.slider__arrow-left'),
-			this.sliderInner = slider.querySelector('.slider__inner');
+			this.sliderInner = slider.querySelector('.slider__inner'),
+			this.offset = 0,
+			this.width = '900px',
+			this.slideIndex = 1;
 
-		const width = '900px';
-
-		let offset = 0;
 
 		this.slides.forEach((slide, id) => {
 			this.sliderInner.innerHTML += `
@@ -55,23 +55,27 @@ export class DefaultSlider {
 		});
 
 		this.btnNext.addEventListener('click', (e) => {
-			if (offset === +width.replace(/\D/g, '') * (this.slides.length - 1)) {
-				offset = 0;
+			if (this.offset === +this.width.replace(/\D/g, '') * (this.slides.length - 1)) {
+				this.offset = 0;
+				this.slideIndex = 1;
 			} else {
-				offset += +width.replace(/\D/g, '');
+				this.offset += +this.width.replace(/\D/g, '');
+				this.slideIndex++;
 			}
 
-			this.sliderInner.style.transform = `translateX(-${offset}px)`;
+			this.sliderInner.style.transform = `translateX(-${this.offset}px)`;
 		});
 
 		this.btnPrev.addEventListener('click', (e) => {
-			if (offset === 0) {
-				offset = +width.replace(/\D/g, '') * (this.slides.length - 1);
+			if (this.offset === 0) {
+				this.offset = +this.width.replace(/\D/g, '') * (this.slides.length - 1);
+				this.slideIndex = this.slides.length;
 			} else {
-				offset -= +width.replace(/\D/g, '');
+				this.offset -= +this.width.replace(/\D/g, '');
+				this.slideIndex--;
 			}
 
-			this.sliderInner.style.transform = `translateX(-${offset}px)`;
+			this.sliderInner.style.transform = `translateX(-${this.offset}px)`;
 		});
 
 		this.selector.after(slider);

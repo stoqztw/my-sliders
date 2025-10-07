@@ -30,4 +30,5 @@ window.addEventListener('DOMContentLoaded', () => {
 		'/src/assets/img/slide_5.png'
 	);
 	sliderWithDots.render();
+	sliderWithDots.addDots();
 });
